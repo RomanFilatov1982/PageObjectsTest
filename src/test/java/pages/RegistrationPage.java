@@ -112,5 +112,9 @@ public class RegistrationPage {
         $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
         return this;
     }
+    public RegistrationPage checkResultNeg(String key, String value) {
+        $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
+        return this;
+    }
 
 }
