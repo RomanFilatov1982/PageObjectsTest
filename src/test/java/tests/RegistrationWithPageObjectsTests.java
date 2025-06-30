@@ -10,7 +10,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    void successfulFillFormTest() {
+    void successfulFullFormTest() {
 
         registrationPage.openPage()
                 .setFirstName("Roman")
@@ -26,7 +26,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .selectState("Haryana")
                 .selectCity("Karnal")
                 .submit()
-                .modalForm();
+                .checkForm();
 
         registrationPage.checkResult("Student Name", "Roman Filatov")
                 .checkResult("Student Email", "romanf@gmail.com")
@@ -35,7 +35,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .checkResult("Date of Birth", "18 January,1982")
                 .checkResult("Subjects", "Physics")
                 .checkResult("Hobbies", "Sports")
-                .checkResult("Picture", "")
+                .checkResult("Picture", "main-2.jpg")
                 .checkResult("Address", "Proxladnaya street 28")
                 .checkResult("State and Sity", "Haryana Karnal");
     }
@@ -47,7 +47,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setUserNumber("9085693730")
                 .setGender("Male")
                 .submit()
-                .modalForm();
+                .checkForm();
 
 
         registrationPage.checkResult("Student Name", "Roman Filatov")

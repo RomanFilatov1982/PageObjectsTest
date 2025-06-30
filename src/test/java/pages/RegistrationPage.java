@@ -98,11 +98,12 @@ public class RegistrationPage {
         return this;
     }
 
-    public void submit() {
+    public RegistrationPage submit() {
         submitButton.click();
+        return this;
     }
 
-    public void modalForm() {
+    public void checkForm() {
         modalDialog.should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
     }
