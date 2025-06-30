@@ -3,8 +3,7 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
@@ -112,8 +111,12 @@ public class RegistrationPage {
         $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
         return this;
     }
-    public RegistrationPage checkResultNeg(String key, String value) {
-        $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
+    public RegistrationPage checkValidationErrors() {
+        $("html").shouldHave(cssClass("was-validated"));
+        firstNameInput.shouldBe(visible);
+        lastNameInput.shouldBe(visible);
+        userEmailInput.shouldBe(visible);
+        userNumberInput.shouldBe(visible);
         return this;
     }
 

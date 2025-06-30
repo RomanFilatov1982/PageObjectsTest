@@ -3,6 +3,7 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
+
 public class RegistrationWithPageObjectsTests extends TestBase {
 
 
@@ -35,7 +36,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .checkResult("Subjects", "Physics")
                 .checkResult("Hobbies", "Sports")
                 .checkResult("Picture", "")
-                .checkResult("Adress", "Proxladnaya street 28")
+                .checkResult("Address", "Proxladnaya street 28")
                 .checkResult("State and Sity", "Haryana Karnal");
     }
     @Test
@@ -63,12 +64,8 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setUserNumber("9085693730")
                 .setDateOfBirth("18", "January", "1982")
                 .setEmail("romanfgmail.com")
-                .submit()
-                .modalForm();
+                .submit();
 
-        registrationPage.checkResultNeg("Student Name", "Roman ")
-                .checkResult("Student Email", "romanfgmail.com")
-                .checkResult("Mobile", "9085693730")
-                .checkResult("Date of Birth", "18 January,1982");
+        registrationPage.checkValidationErrors();
     }
 }
