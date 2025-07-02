@@ -1,7 +1,12 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+
+import java.util.Locale;
+
+import static tests.TestDate.*;
 
 
 public class RegistrationWithPageObjectsTests extends TestBase {
@@ -13,57 +18,58 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     void successfulFullFormTest() {
 
         registrationPage.openPage()
-                .setFirstName("Roman")
-                .setLastName("Filatov")
-                .setEmail("romanf@gmail.com")
-                .setGender("Male")
-                .setUserNumber("9085693730")
-                .setDateOfBirth("18", "January", "1982")
-                .setSubjects("Physics")
-                .setHobbies("Sports")
-                .setUploadPicture("img/main-2.jpg")
-                .setCurrentAdress("Proxladnaya street 28")
-                .selectState("Haryana")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(userEmail)
+                .setGender(gender)
+                .setUserNumber(userNumber)
+                .setDateOfBirth(birthday, monthNumber, year)
+                .setSubjects(subject)
+                .setHobbies(hobby)
+                .setUploadPicture(picture)
+                .setCurrentAdress(streetAddress)
+                .selectState(state)
                 .selectCity("Karnal")
                 .submit()
                 .checkForm();
 
-        registrationPage.checkResult("Student Name", "Roman Filatov")
-                .checkResult("Student Email", "romanf@gmail.com")
-                .checkResult("Gender", "Male")
-                .checkResult("Mobile", "9085693730")
-                .checkResult("Date of Birth", "18 January,1982")
-                .checkResult("Subjects", "Physics")
-                .checkResult("Hobbies", "Sports")
-                .checkResult("Picture", "main-2.jpg")
-                .checkResult("Address", "Proxladnaya street 28")
-                .checkResult("State and Sity", "Haryana Karnal");
+        registrationPage.checkResult("Student Name", firstName + " " + lastName)
+                .checkResult("Student Email", userEmail)
+                .checkResult("Gender", gender)
+                .checkResult("Mobile", userNumber)
+                .checkResult("Date of Birth", birthday +" "+ monthNumber +" "+ year)
+                .checkResult("Subjects", subject)
+                .checkResult("Hobbies", hobby)
+                .checkResult("Picture", picture)
+                .checkResult("Address", streetAddress)
+                .checkResult("State and City", state +" "+ city);
     }
     @Test
     void successfulMinFormTest() {
+
         registrationPage.openPage()
-                .setFirstName("Roman")
-                .setLastName("Filatov")
-                .setUserNumber("9085693730")
-                .setGender("Male")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setUserNumber(userNumber)
+                .setGender(gender)
                 .submit()
                 .checkForm();
 
 
-        registrationPage.checkResult("Student Name", "Roman Filatov")
-                .checkResult("Mobile", "9085693730")
-                .checkResult("Gender", "Male");
+        registrationPage.checkResult("Student Name", firstName + " " + lastName)
+                .checkResult("Mobile", userNumber)
+                .checkResult("Gender", gender);
     }
 
     @Test
     void negativeMinFormTest() {
 
         registrationPage.openPage()
-                .setFirstName("Roman")
+                .setFirstName(firstName)
                 .setLastName(" ")
-                .setUserNumber("9085693730")
-                .setDateOfBirth("18", "January", "1982")
-                .setEmail("romanfgmail.com")
+                .setUserNumber(userNumber)
+                .setDateOfBirth(birthday +" "+ monthNumber +" "+ year)
+                .setEmail(userEmail)
                 .submit();
 
         registrationPage.checkValidationErrors();
