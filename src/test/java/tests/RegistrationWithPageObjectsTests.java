@@ -28,16 +28,8 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .submit()
                 .checkForm();
 
-        registrationPage.checkResult("Student Name", "Roman Filatov")
-                .checkResult("Student Email", "romanf@gmail.com")
-                .checkResult("Gender", "Male")
-                .checkResult("Mobile", "9085693730")
-                .checkResult("Date of Birth", "18 January,1982")
-                .checkResult("Subjects", "Physics")
-                .checkResult("Hobbies", "Sports")
-                .checkResult("Picture", "main-2.jpg")
-                .checkResult("Address", "Proxladnaya street 28")
-                .checkResult("State and Sity", "Haryana Karnal");
+        registrationPage.checkResult();
+
     }
     @Test
     void successfulMinFormTest() {
@@ -50,9 +42,8 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .checkForm();
 
 
-        registrationPage.checkResult("Student Name", "Roman Filatov")
-                .checkResult("Mobile", "9085693730")
-                .checkResult("Gender", "Male");
+        registrationPage.checkResult();
+
     }
 
     @Test

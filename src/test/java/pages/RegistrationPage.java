@@ -109,7 +109,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkResult(String key, String value) {
-        $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
+        calendarComponent.formResult(key, value);
         return this;
     }
     public RegistrationPage checkValidationErrors() {
