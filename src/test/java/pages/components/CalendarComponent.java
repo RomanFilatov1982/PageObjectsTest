@@ -11,7 +11,7 @@ public class CalendarComponent {
         $("select.react-datepicker__year-select").selectOption("1982");
         $(".react-datepicker__day--018:not(.react-datepicker__day--outside-month").click();
     }
-    public CalendarComponent formResult(String key, String value) {
+    public void formResult(String key, String value) {
         $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
     }
 }
