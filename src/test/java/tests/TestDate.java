@@ -28,7 +28,7 @@ public class TestDate {
     state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
             city = selectCity(state);
 
-    public String selectCity(String state) {
+    public static String selectCity(String state) {
         return switch (state) {
             case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
             case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
