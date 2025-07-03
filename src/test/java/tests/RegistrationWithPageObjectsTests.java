@@ -14,6 +14,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
 
 
     RegistrationPage registrationPage = new RegistrationPage();
+    TestDate testDate = new TestDate();
 
     @Test
     void successfulFullFormTest() {
@@ -24,13 +25,13 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setEmail(userEmail)
                 .setGender(gender)
                 .setUserNumber(userNumber)
-                .setDateOfBirth(day + "" month + " " year)
+                .setDateOfBirth(testDate.date, testDate.month, testDate.year)
                 .setSubjects(subject)
                 .setHobbies(hobby)
                 .setUploadPicture(picture)
                 .setCurrentAdress(streetAddress)
                 .selectState(state)
-                .selectCity("Karnal")
+                .selectCity(city)
                 .submit()
                 .checkForm();
 
@@ -38,13 +39,14 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .checkResult("Student Email", userEmail)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", userNumber)
-                .checkResult("Date of Birth", birthday +" "+ monthNumber +" "+ year)
+                .checkResult("Date of Birth", birthday + " " + monthNumber + " " + year)
                 .checkResult("Subjects", subject)
                 .checkResult("Hobbies", hobby)
                 .checkResult("Picture", picture)
                 .checkResult("Address", streetAddress)
-                .checkResult("State and City", state +" "+ city);
+                .checkResult("State and City", state + " " + city);
     }
+
     @Test
     void successfulMinFormTest() {
 
@@ -69,7 +71,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setFirstName(firstName)
                 .setLastName(" ")
                 .setUserNumber(userNumber)
-                .setDateOfBirth(birthday +" "+ monthNumber +" "+ year)
+                .setDateOfBirth(birthday + " " + monthNumber + " " + year)
                 .setEmail(userEmail)
                 .submit();
 

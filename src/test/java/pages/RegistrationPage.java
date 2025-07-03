@@ -79,7 +79,7 @@ public class RegistrationPage {
     public RegistrationPage setUploadPicture(String resourcePath) {
         uploadPictureInput.uploadFromClasspath(resourcePath);
         return this;
-            }
+    }
 
     public RegistrationPage setCurrentAdress(String value) {
         currentAdress.setValue(value);
@@ -112,6 +112,7 @@ public class RegistrationPage {
         $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
         return this;
     }
+
     public RegistrationPage checkValidationErrors() {
         $("html").shouldHave(cssClass("was-validated"));
         firstNameInput.shouldBe(visible);

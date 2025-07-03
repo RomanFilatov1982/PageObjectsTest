@@ -2,40 +2,40 @@ package tests;
 
 import com.github.javafaker.Faker;
 
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Locale;
 
 public class TestDate {
     public static Faker faker = new Faker(new Locale("en-GB"));
 
     public static String firstName = faker.name().firstName(),
-    lastName = faker.name().lastName(),
-    userEmail = faker.internet().emailAddress(),
-    streetAddress = faker.address().streetAddress(),
-    userNumber = faker.phoneNumber().subscriberNumber(10),
-    gender = faker.options().option("Male", "Female", "Other"),
-    subject = faker.options().option("Maths", "Physics", "Chemistry", "Biology",
-            "English", "History", "Geography", "Computer Science",
-            "Economics", "Arts", "Hindi", "Social Studies"),
+            lastName = faker.name().lastName(),
+            userEmail = faker.internet().emailAddress(),
+            streetAddress = faker.address().streetAddress(),
+            userNumber = faker.phoneNumber().subscriberNumber(10),
+            gender = faker.options().option("Male", "Female", "Other"),
+            subject = faker.options().option("Maths", "Physics", "Chemistry", "Biology",
+                    "English", "History", "Geography", "Computer Science",
+                    "Economics", "Arts", "Hindi", "Social Studies"),
+            date = String.format("%s", faker.number().numberBetween(1, 28)),
+            month = faker.options().option("January", "February", "March", "April",
+                    "May", "June", "July", "August", "September", "October", "November", "December"),
+            year = String.format("%s", faker.number().numberBetween(1900, 2025)),
 
     hobby = faker.options().option("Sports", "Reading", "Music"),
-    picture = faker.file("main-2.jpg") ;
 
-    String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
-    String state = faker.options().option(states);
+    picture = faker.options().option("main-2.jpg"),
 
-    Map<String, List<String>> stateCityMap = new HashMap<>();
-stateCityMap.put("NCR", Arrays.asList("Delhi", "Gurgaon", "Noida"));
-stateCityMap.put("Uttar Pradesh", Arrays.asList("Agra", "Lucknow", "Merrut"));
-stateCityMap.put("Haryana", Arrays.asList("Karnal", "Panipat"));
-stateCityMap.put("Rajasthan", Arrays.asList("Jaipur", "Jaiselmer"));
+    state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
+            city = selectCity(state);
 
-    String state = faker.options().option(stateCityMap.keySet().toArray(new String[0]));
-    List<String> cities = stateCityMap.get(state);
-    String city = faker.options().option(cities.toArray(new String[0]));
-
-    LocalDate randomDate = faker.date().birthdayLocalDate();
-
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    public String selectCity(String state) {
+        return switch (state) {
+            case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
+            case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
+            case "Haryana" -> faker.options().option("Karnal", "Panipat");
+            case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
+            default -> null;
+        };
+    }
 
 }
