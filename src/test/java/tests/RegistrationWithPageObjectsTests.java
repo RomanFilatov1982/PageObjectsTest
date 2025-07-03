@@ -3,6 +3,7 @@ package tests;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import pages.components.CalendarComponent;
 
 import java.util.Locale;
 
@@ -23,7 +24,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setEmail(userEmail)
                 .setGender(gender)
                 .setUserNumber(userNumber)
-                .setDateOfBirth(birthday, monthNumber, year)
+                .setDateOfBirth(day + "" month + " " year)
                 .setSubjects(subject)
                 .setHobbies(hobby)
                 .setUploadPicture(picture)

@@ -2,6 +2,7 @@ package tests;
 
 import com.github.javafaker.Faker;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TestDate {
@@ -11,23 +12,14 @@ public class TestDate {
     lastName = faker.name().lastName(),
     userEmail = faker.internet().emailAddress(),
     streetAddress = faker.address().streetAddress(),
-    userNumber = faker.phoneNumber().subscriberNumber(10);
-
-    String[] genders = {"Male", "Female", "Other"};
-    String gender = genders[new Random().nextInt(genders.length)];
-
-    List<String> subjects = Arrays.asList(
-            "Maths", "Physics", "Chemistry", "Biology",
+    userNumber = faker.phoneNumber().subscriberNumber(10),
+    gender = faker.options().option("Male", "Female", "Other"),
+    subject = faker.options().option("Maths", "Physics", "Chemistry", "Biology",
             "English", "History", "Geography", "Computer Science",
-            "Economics", "Arts", "Hindi", "Social Studies"
-    );
-    String subject = subjects.get(new Random().nextInt(subjects.size()));
+            "Economics", "Arts", "Hindi", "Social Studies"),
 
-    List<String> hobbies = Arrays.asList("Sports", "Reading", "Music");
-
-    String hobby = hobbies.get(new Random().nextInt(hobbies.size()));
-
-    String picture = "main-2.jpg";
+    hobby = faker.options().option("Sports", "Reading", "Music"),
+    picture = faker.file("main-2.jpg") ;
 
     String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
     String state = faker.options().option(states);
@@ -42,8 +34,8 @@ stateCityMap.put("Rajasthan", Arrays.asList("Jaipur", "Jaiselmer"));
     List<String> cities = stateCityMap.get(state);
     String city = faker.options().option(cities.toArray(new String[0]));
 
-    final Date birthday = faker.date().birthday(1, 32);
-    final int monthNumber = faker.number().numberBetween(1, 13);
-    final int year = faker.number().numberBetween(1900, 2026);
+    LocalDate randomDate = faker.date().birthdayLocalDate();
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
 }
