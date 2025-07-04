@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.FormResult;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -26,6 +27,7 @@ public class RegistrationPage {
             modalDialog = $(".modal-dialog");
 
     CalendarComponent calendarComponent = new CalendarComponent();
+    FormResult formResult = new FormResult();
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -109,7 +111,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkResult(String key, String value) {
-        $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
+       formResult.result(key, value);
         return this;
     }
 

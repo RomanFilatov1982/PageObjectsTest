@@ -35,7 +35,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .checkResult("Student Email", userEmail)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", userNumber)
-                .checkResult("Date of Birth", date + " " + month + " " + year)
+                .checkResult("Date of Birth", date + " " + month + "," + year)
                 .checkResult("Subjects", subject)
                 .checkResult("Hobbies", hobby)
                 .checkResult("Picture", picture)
