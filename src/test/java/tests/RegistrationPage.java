@@ -1,4 +1,4 @@
-package pages;
+package tests;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
@@ -7,7 +7,6 @@ import pages.components.FormResult;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
     private SelenideElement firstNameInput = $("#firstName"),
@@ -79,9 +78,10 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setUploadPicture(String resourcePath) {
-        uploadPictureInput.uploadFromClasspath(resourcePath);
+       uploadPictureInput.uploadFromClasspath(resourcePath);
         return this;
     }
+
 
     public RegistrationPage setCurrentAdress(String value) {
         currentAdress.setValue(value);
