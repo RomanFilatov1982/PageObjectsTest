@@ -31,7 +31,10 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
+        return this;
+    }
 
+    public RegistrationPage closeReclame() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
@@ -81,7 +84,7 @@ public class RegistrationPage {
     public RegistrationPage setUploadPicture(String resourcePath) {
         uploadPictureInput.uploadFromClasspath(resourcePath);
         return this;
-            }
+    }
 
     public RegistrationPage setCurrentAdress(String value) {
         currentAdress.setValue(value);
@@ -114,6 +117,7 @@ public class RegistrationPage {
         formResult.result(key, value);
         return this;
     }
+
     public RegistrationPage checkValidationErrors() {
         $("html").shouldHave(cssClass("was-validated"));
         firstNameInput.shouldBe(visible);

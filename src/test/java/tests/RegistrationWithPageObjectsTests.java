@@ -13,6 +13,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     void successfulFullFormTest() {
 
         registrationPage.openPage()
+                .closeReclame()
                 .setFirstName("Roman")
                 .setLastName("Filatov")
                 .setEmail("romanf@gmail.com")
@@ -40,9 +41,11 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .checkResult("State and City", "Haryana" + " " + "Karnal");
 
     }
+
     @Test
     void successfulMinFormTest() {
         registrationPage.openPage()
+                .closeReclame()
                 .setFirstName("Roman")
                 .setLastName("Filatov")
                 .setUserNumber("9085693730")
@@ -61,6 +64,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     void negativeMinFormTest() {
 
         registrationPage.openPage()
+                .closeReclame()
                 .setFirstName("Roman")
                 .setLastName(" ")
                 .setUserNumber("9085693730")
