@@ -16,7 +16,7 @@ public class TestDate {
             subject = faker.options().option("Maths", "Physics", "Chemistry", "Biology",
                     "English", "History", "Geography", "Computer Science",
                     "Economics", "Arts", "Hindi", "Social Studies"),
-            date = String.format("%s", faker.number().numberBetween(1, 28)),
+            date = String.format("%02d", faker.number().numberBetween(1, 28)),
             month = faker.options().option("January", "February", "March", "April",
                     "May", "June", "July", "August", "September", "October", "November", "December"),
             year = String.format("%s", faker.number().numberBetween(1900, 2025)),
