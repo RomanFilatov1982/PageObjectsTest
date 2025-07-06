@@ -1,15 +1,12 @@
 package pages.components;
 
-import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class FormResult {
-    SelenideElement resultForm = $(".table-responsive");
     public void result(String key, String value) {
-        resultForm.$(byText(key)).parent().shouldHave(text(value));
+        $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
     }
 }
 
