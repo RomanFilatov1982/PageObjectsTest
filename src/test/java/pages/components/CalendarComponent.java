@@ -12,6 +12,7 @@ public class CalendarComponent {
     private final ElementsCollection daySelect = $$(".react-datepicker__day");
 
     public void setDate(String day, String month, String year) {
+
         monthSelect.selectOption(month);
         yearSelect.selectOption(year);
         daySelect.findBy(text(day)).click();
