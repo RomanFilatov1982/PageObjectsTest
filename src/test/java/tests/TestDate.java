@@ -7,7 +7,7 @@ import java.util.Locale;
 public class TestDate {
     public static Faker faker = new Faker(new Locale("en-GB"));
 
-    public static String firstName = faker.name().firstName(),
+    public static final String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
             userEmail = faker.internet().emailAddress(),
             streetAddress = faker.address().streetAddress(),
