@@ -20,6 +20,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setEmail(userEmail)
                 .setGender(gender)
                 .setUserNumber(userNumber)
+                .setCalendar()
                 .setDateOfBirth(testDate.date, testDate.month, testDate.year)
                 .setSubjects(subject)
                 .setHobbies(hobby)
