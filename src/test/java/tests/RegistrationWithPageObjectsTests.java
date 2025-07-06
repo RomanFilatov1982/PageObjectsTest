@@ -19,6 +19,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setEmail("romanf@gmail.com")
                 .setGender("Male")
                 .setUserNumber("9085693730")
+                .setCalendar()
                 .setDateOfBirth("18", "January", "1982")
                 .setSubjects("Physics")
                 .setHobbies("Sports")

@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
-    private SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genderWrapper = $("#genterWrapper"),
@@ -64,9 +64,12 @@ public class RegistrationPage {
         userNumberInput.setValue(value);
         return this;
     }
+    public RegistrationPage setCalendar() {
+        calendarInput.click();
+        return this;
+    }
 
     public RegistrationPage setDateOfBirth(String day, String month, String year) {
-        calendarInput.click();
         calendarComponent.setDate(day, month, year);
         return this;
     }
