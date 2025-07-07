@@ -1,6 +1,7 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
 
 import static tests.TestDate.*;
 
@@ -9,66 +10,75 @@ public class RegistrationWithPageObjectsTests extends TestBase {
 
 
     RegistrationPage registrationPage = new RegistrationPage();
-    TestDate testDate = new TestDate();
 
     @Test
     void successfulFullFormTest() {
 
+        TestDateValues testDateValues = new TestDateValues();
+
         registrationPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(userEmail)
-                .setGender(gender)
-                .setUserNumber(userNumber)
+                .closeReclame()
+                .setFirstName(testDateValues.firstName)
+                .setLastName(testDateValues.lastName)
+                .setEmail(testDateValues.userEmail)
+                .setGender(testDateValues.gender)
+                .setUserNumber(testDateValues.userNumber)
                 .setCalendar()
-                .setDateOfBirth(testDate.date, testDate.month, testDate.year)
-                .setSubjects(subject)
-                .setHobbies(hobby)
-                .setUploadPicture(picture)
-                .setCurrentAdress(streetAddress)
-                .selectState(state)
-                .selectCity(city)
+                .setDateOfBirth(testDateValues.date, testDateValues.month, testDateValues.year)
+                .setSubjects(testDateValues.subject)
+                .setHobbies(testDateValues.hobby)
+                .setUploadPicture(testDateValues.picture)
+                .setCurrentAdress(testDateValues.address)
+                .selectState(testDateValues.state)
+                .selectCity(testDateValues.city)
                 .submit()
                 .checkForm();
 
-        registrationPage.checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Student Email", userEmail)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", userNumber)
-                .checkResult("Date of Birth", date + " " + month + "," + year)
-                .checkResult("Subjects", subject)
-                .checkResult("Hobbies", hobby)
-                .checkResult("Picture", picture)
-                .checkResult("Address", streetAddress)
-                .checkResult("State and City", state + " " + city);
+
+        registrationPage.checkResult("Student Name", testDateValues.firstName + " " + testDateValues.lastName)
+                .checkResult("Student Email", testDateValues.userEmail)
+                .checkResult("Gender", testDateValues.gender)
+                .checkResult("Mobile", testDateValues.userNumber)
+                .checkResult("Date of Birth", testDateValues.date + " " + testDateValues.month + "," + testDateValues.year)
+                .checkResult("Subjects", testDateValues.subject)
+                .checkResult("Hobbies", testDateValues.hobby)
+                .checkResult("Picture", testDateValues.picture)
+                .checkResult("Address", testDateValues.address)
+                .checkResult("State and City", testDateValues.state + " " + testDateValues.city);
     }
 
     @Test
     void successfulMinFormTest() {
 
+        TestDateValues testDateValues = new TestDateValues();
+
         registrationPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setUserNumber(userNumber)
-                .setGender(gender)
+                .closeReclame()
+                .setFirstName(testDateValues.firstName)
+                .setLastName(testDateValues.lastName)
+                .setUserNumber(testDateValues.userNumber)
+                .setGender(testDateValues.gender)
                 .submit()
                 .checkForm();
 
 
-        registrationPage.checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Mobile", userNumber)
-                .checkResult("Gender", gender);
+        registrationPage.checkResult("Student Name", testDateValues.firstName + " " + testDateValues.lastName)
+                .checkResult("Mobile", testDateValues.userNumber)
+                .checkResult("Gender", testDateValues.gender);
     }
 
     @Test
     void negativeMinFormTest() {
 
+        TestDateValues testDateValues = new TestDateValues();
+
         registrationPage.openPage()
-                .setFirstName(firstName)
+                .closeReclame()
+                .setFirstName(testDateValues.firstName)
                 .setLastName(" ")
-                .setUserNumber(userNumber)
-                .setDateOfBirth(testDate.date, testDate.month, testDate.year)
-                .setEmail(userEmail)
+                .setUserNumber(testDateValues.userNumber)
+                .setDateOfBirth(testDateValues.date, testDateValues.month, testDateValues.year)
+                .setEmail(testDateValues.userEmail)
                 .submit();
 
         registrationPage.checkValidationErrors();

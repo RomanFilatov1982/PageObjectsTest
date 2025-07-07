@@ -1,4 +1,4 @@
-package tests;
+package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
@@ -30,7 +30,10 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
+        return this;
+    }
 
+    public RegistrationPage closeReclame() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
@@ -82,7 +85,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setUploadPicture(String resourcePath) {
-       uploadPictureInput.uploadFromClasspath(resourcePath);
+        uploadPictureInput.uploadFromClasspath(resourcePath);
         return this;
     }
 
@@ -115,7 +118,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkResult(String key, String value) {
-       formResult.result(key, value);
+        formResult.result(key, value);
         return this;
     }
 
