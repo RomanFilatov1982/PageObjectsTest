@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.FormResult;
@@ -123,11 +124,10 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkValidationErrors() {
-        $("html").shouldHave(cssClass("was-validated"));
-        firstNameInput.shouldBe(visible);
-        lastNameInput.shouldBe(visible);
-        userEmailInput.shouldBe(visible);
-        userNumberInput.shouldBe(visible);
+        firstNameInput.shouldHave(Condition.cssValue("border-color", "#dc3545"));
+        lastNameInput.shouldHave(Condition.cssValue("border-color", "#dc3545"));
+        userEmailInput.shouldHave(Condition.cssValue("border-color", "#dc3545"));
+        userNumberInput.shouldHave(Condition.cssValue("border-color", "#dc3545"));
         return this;
     }
 
